@@ -33,13 +33,13 @@ class Github(object):
             name: Name of file (Optional)
         """
         if name is None:
-            r = self.session.get(self.url)
+            self.r = self.session.get(self.url)
         else:
-            r = self.session.get(self.url+name)
-        if r.status_code == 200:
-            return r.json()
+            self.r = self.session.get(self.url+name)
+        if self.r.status_code == 200:
+            return self.r.json()
         else:
-            r.raise_for_status()
+            self.r.raise_for_status()
 
     def display_file(self, name):
         """List the contents of the repo/file
@@ -48,8 +48,8 @@ class Github(object):
         Returns:
             A string which is the content of the file
         """
-        r = self.get_contents(name)
-        return base64.b64decode(r['content'])
+        self.r = self.get_contents(name)
+        return base64.b64decode(self.r['content'])
 
     def create_file(self, name, message, content):
         """Creates a new file in Github repo
@@ -60,11 +60,11 @@ class Github(object):
         """
         self.payload = json.dumps({'message': message,
                                    'content': base64.b64encode(content)})
-        r = self.session.put(self.url+name, data=self.payload)
-        if r.status_code == 201:
-            return r.json()
+        self.r = self.session.put(self.url+name, data=self.payload)
+        if self.r.status_code == 201:
+            return self.r.json()
         else:
-            r.raise_for_status()
+            self.r.raise_for_status()
 
     def delete_file(self, name, message):
         """Deletes a file
@@ -74,11 +74,11 @@ class Github(object):
         """
         self.sha = self.get_contents(name)['sha']
         self.payload = json.dumps({'message': message, 'sha': self.sha})
-        r = self.session.delete(self.url+name, data=self.payload)
-        if r.status_code == 200:
-            return r.json()
+        self.r = self.session.delete(self.url+name, data=self.payload)
+        if self.r.status_code == 200:
+            return self.r.json()
         else:
-            r.raise_for_status()
+            self.r.raise_for_status()
 
     def update_file(self, name, message, content):
         """Updates a file in Github repo
