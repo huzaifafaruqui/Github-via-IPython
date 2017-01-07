@@ -23,22 +23,17 @@ sess = git_jupyter.Jupyter('README.ipynb','huzaifafaruqui','Github-via-IPython',
             # username and password will be hidden automatically
 ```
 
+### Please Save your file before creation/updation 
 
+
+### Create File
 ```python
 sess.create_file('README.ipynb','Read this')
 #                 file name, commit message
 ```
 
 
-```python
-print 'now updating file'
-```
-
-    now updating file
-
-
-### Please Save your file before creation/updation 
-
+### Update File
 
 ```python
 sess.update_file('README.ipynb','Updated')
@@ -57,7 +52,8 @@ sess.update_file('README.ipynb','Updated')
 
 ## Contributing
 
-Please feel free to send PR. This is a very simple script but I want to extend its functionalities. Also, create an issue if you find any bug
+Please feel free to send PR. This is a very simple script but I want to extend its functionalities. Also, create an issue if you find any bug.
+Note - My code follows PEP8 guidelines.
 
 ## Authors
 
