@@ -42,7 +42,7 @@ class Github(object):
             self.r.raise_for_status()
 
     def display_file(self, name):
-        """List the contents of the repo/file
+        """Display the contents of a file.
         Args:
             name: Name of file
         Returns:
