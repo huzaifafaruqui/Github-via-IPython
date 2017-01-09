@@ -120,14 +120,14 @@ class Jupyter(Github):
         self.content = self.content.replace(self.username, '*' * len(self.username))
         self.content = self.content.replace(self.password, '*' * len(self.password))
 
-    def create_file(self, name, message):
+    def create_file(self, name, message, content=self.content):
         self._update_content()
         super(Jupyter, self).create_file(name=name, message=message,
-                                        content=self.content)
+                                        content=content)
 
-    def update_file(self, name, message):
+    def update_file(self, name, message, content=self.content):
         self._update_content()
         super(Jupyter, self).update_file(name=name, message=message,
-                                         content=self.content)
+                                         content=content)
 
     #use Base class method for deletion
