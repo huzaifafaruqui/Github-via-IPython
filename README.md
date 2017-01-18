@@ -55,6 +55,12 @@ sess.update_file('README.ipynb','Updated')
 Please feel free to send PR. This is a very simple script but I want to extend its functionalities. Also, create an issue if you find any bug.
 Note - My code follows PEP8 guidelines.
 
+## Contributing
+
+1. Replace Basic Auth with OAuth
+2. Ability to create a repo
+3. Write tests
+
 ## Authors
 
 Huzaifa Faruqui
